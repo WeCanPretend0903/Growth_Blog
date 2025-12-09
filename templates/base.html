@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}SWE Blog{% endblock %}</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+
+    <!-- NAVIGATION BAR -->
+    <nav class="navbar">
+        <div class="nav-left">
+            <a href="/" class="logo">Journey To The West</a>
+        </div>  
+
+        <div class="nav-right">
+            <a href="/">Intro</a>
+            <a href="/Progress">Progress</a>
+            <a href="/Projects">Projects</a>
+        </div>
+    </nav>
+
+    <div class="content">
+        {% block content %}{% endblock %}
+    </div>
+
+</body>
+</html>

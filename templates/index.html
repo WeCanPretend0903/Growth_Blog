@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="dashboard-grid">
+    
+    <!-- About Me Module -->
+    <div class="cyber-card">
+        <h2 class="header-glitch" data-text="// IDENTITY">// IDENTITY</h2>
+        <div class="terminal-window">
+            <p><span class="prompt">root@blog:~$</span> Who am I?</p>
+            <p class="output">>> PJ | Software Engineer</p>
+            
+            <p><span class="prompt">root@blog:~$</span></p>
+            <p class="output">>> Get in a better shape</p>
+            <p class="output">>> Documenting the journey from 0 to 1.</p>
+            
+            <p><span class="prompt">root@blog:~$</span> <span class="cursor">_</span></p>
+        </div>
+    </div>
+
+    <!-- Location Visualization Module -->
+    <div class="cyber-card location-card">
+        <h2 class="header-glitch" data-text="// GEOLOCATION">// GEOLOCATION</h2>
+        
+        <div class="globe-container">
+            <div class="globe-world-map">
+                <!-- Blip moves with the map -->
+                <div class="target-blip"></div>
+                <!-- Duplicate blip for the second map instance (seamless loop) -->
+                <div class="target-blip" style="left: 63.5%;"></div> 
+            </div>
+            <div class="globe-scan-line"></div>
+        </div>
+
+        <div class="location-data">
+            <div class="data-row">
+                <span class="label">TARGET:</span>
+                <span class="value blink-text">NEW YORK CITY</span>
+            </div>
+            <div class="data-row">
+                <span class="label">COORDS:</span>
+                <span class="coords">40.7128° N, 74.0060° W</span>
+            </div>
+            <div class="data-row">
+                <span class="label">STATUS:</span>
+                <span class="value" style="color: #00ff00;">ONLINE</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}
