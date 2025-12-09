@@ -1,7 +1,35 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="dashboard-grid">
+<!-- Hero Section (Full Screen) -->
+<div class="hero-section">
+    <div class="hero-content">
+        <h1 class="hero-name glitch" data-text="PJ HUANG">PJ HUANG</h1>
+        <p class="hero-subtitle">Computer Science Student , City College Of New York</p>
+        <a href="/static/resume.pdf" class="hero-btn">RESUME_</a>
+    </div>
+    <div class="hero-car">
+        <!-- Placeholder for car image/animation -->
+        <img src="/static/images/cyberpunk-911.png" alt="Cyber Car" class="car-img">
+    </div>
+</div>
+
+<div class="main-layout" id="dashboard-section">
+    <!-- Activity Chat (Left Column) -->
+    <div class="activity-chat-container">
+        <div class="cyber-card chat-card">
+            <h2 class="header-glitch" data-text="// SYSTEM_LOGS">// SYSTEM_LOGS</h2>
+            <div class="chat-window" id="activity-log">
+                <!-- Logs will be injected here via JS -->
+                <div class="log-entry"><span class="timestamp">[09:00]</span> <span class="sys-msg">System initialized...</span></div>
+                <div class="log-entry"><span class="timestamp">[09:01]</span> <span class="sys-msg">Connecting to GitHub API...</span></div>
+                <div class="log-entry"><span class="timestamp">[09:01]</span> <span class="success-msg">Connection established.</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dashboard (Center Column) -->
+    <div class="dashboard-grid">
     
     <!-- About Me Module -->
     <div class="cyber-card">
@@ -20,7 +48,7 @@
         <!-- Social Links -->
         <div class="social-links">
             <a href="https://www.linkedin.com/in/pj0903" target="_blank" class="social-btn">
-                <i class="fab fa-linkedin"></i> LinkedIn
+                <i class="fab fa-linkedin"></i> Linkedin
             </a>
             <a href="https://www.instagram.com/peijian_huang/" target="_blank" class="social-btn">
                 <i class="fab fa-instagram"></i> Instagram
@@ -70,7 +98,7 @@
                     <span>Repos:</span> <span id="gh-repos" class="loading">--</span>
                 </div>
                 <div class="stat-row">
-                    <span>Followers:</span> <span id="gh-followers" class="loading">--</span>
+                    <span>Contributions (YTD):</span> <span id="gh-contribs" class="loading">--</span>
                 </div>
                 <div class="progress-bar-container">
                     <div class="progress-label">Activity</div>
@@ -98,10 +126,117 @@
             </div>
         </div>
     </div>
+    </div> <!-- End dashboard-grid -->
 
+    <!-- Todo List (Right Column) -->
+    <div class="todo-list-container">
+        <div class="cyber-card chat-card">
+            <h2 class="header-glitch" data-text="// DAILY_QUEST">// DAILY_QUEST</h2>
+            <div class="chat-window" id="todo-list">
+                <div class="log-entry">
+                    <span class="success-msg">• System Check</span>
+                </div>
+                <div class="log-entry">
+                    <span class="sys-msg">• Update Blog</span>
+                </div>
+                <div class="log-entry">
+                    <span class="sys-msg">• LeetCode Daily</span>
+                </div>
+                <div class="log-entry">
+                    <span class="sys-msg">• Commit to GitHub</span>
+                </div>
+                <div class="log-entry">
+                    <span class="sys-msg">• Weight Training</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div> <!-- End main-layout -->
+
+<!-- Projects Showcase Section -->
+<div class="projects-section" id="projects-section">
+    <h2 class="section-title glitch" data-text="PROJECT_ARCHIVES">PROJECT_ARCHIVES</h2>
+    
+    <div class="projects-slider-container">
+        <button class="slider-btn prev-btn" onclick="scrollProjects(-1)"><i class="fas fa-chevron-left"></i></button>
+        
+        <div class="projects-slider" id="projectsSlider">
+            <!-- Project Card 1 -->
+            <div class="project-card">
+                <div class="project-img-placeholder">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="project-info">
+                    <h3>AI Chatbot</h3>
+                    <p>A Python-based chatbot using OpenAI API.</p>
+                    <div class="tech-stack">
+                        <span>Python</span><span>Flask</span><span>OpenAI</span>
+                    </div>
+                    <a href="#" class="project-link">VIEW_CODE</a>
+                </div>
+            </div>
+
+            <!-- Project Card 2 -->
+            <div class="project-card">
+                <div class="project-img-placeholder">
+                    <i class="fas fa-gamepad"></i>
+                </div>
+                <div class="project-info">
+                    <h3>Retro Game Engine</h3>
+                    <p>2D game engine built with C++ and SDL2.</p>
+                    <div class="tech-stack">
+                        <span>C++</span><span>SDL2</span><span>Lua</span>
+                    </div>
+                    <a href="#" class="project-link">VIEW_CODE</a>
+                </div>
+            </div>
+
+            <!-- Project Card 3 -->
+            <div class="project-card">
+                <div class="project-img-placeholder">
+                    <i class="fas fa-cloud"></i>
+                </div>
+                <div class="project-info">
+                    <h3>Cloud Dashboard</h3>
+                    <p>Real-time server monitoring dashboard.</p>
+                    <div class="tech-stack">
+                        <span>React</span><span>Node.js</span><span>AWS</span>
+                    </div>
+                    <a href="#" class="project-link">VIEW_CODE</a>
+                </div>
+            </div>
+
+            <!-- Project Card 4 -->
+            <div class="project-card">
+                <div class="project-img-placeholder">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <div class="project-info">
+                    <h3>Fitness Tracker App</h3>
+                    <p>Mobile app for tracking workouts and diet.</p>
+                    <div class="tech-stack">
+                        <span>Flutter</span><span>Firebase</span>
+                    </div>
+                    <a href="#" class="project-link">VIEW_CODE</a>
+                </div>
+            </div>
+        </div>
+
+        <button class="slider-btn next-btn" onclick="scrollProjects(1)"><i class="fas fa-chevron-right"></i></button>
+    </div>
 </div>
 
 <script>
+    function scrollProjects(direction) {
+        const slider = document.getElementById('projectsSlider');
+        const scrollAmount = 320; // Card width + gap
+        slider.scrollBy({
+            left: direction * scrollAmount,
+            behavior: 'smooth'
+        });
+    }
+
     // Configuration - REPLACE THESE WITH YOUR USERNAMES
     const GITHUB_USERNAME = 'WeCanPretend0903'; // Inferred from repo
     const LEETCODE_USERNAME = 'Fu710202347'; 
@@ -116,6 +251,17 @@
             document.getElementById('gh-followers').classList.remove('loading');
         })
         .catch(err => console.error('GitHub fetch failed', err));
+
+    // Fetch GitHub Contributions (via 3rd party API)
+    fetch(`https://github-contributions-api.jogruber.de/v4/${GITHUB_USERNAME}`)
+        .then(response => response.json())
+        .then(data => {
+            const currentYear = new Date().getFullYear();
+            const total = data.total[currentYear] || 0;
+            document.getElementById('gh-contribs').innerText = total;
+            document.getElementById('gh-contribs').classList.remove('loading');
+        })
+        .catch(err => console.error('GitHub contributions fetch failed', err));
 
     // Fetch LeetCode Data (using a public proxy API)
     fetch(`https://leetcode-stats-api.herokuapp.com/${LEETCODE_USERNAME}`)

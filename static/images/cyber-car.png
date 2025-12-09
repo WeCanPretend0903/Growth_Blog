@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 300">
+    <!-- Cyber Car Silhouette -->
+    <path d="M100,200 L200,150 L500,150 L600,180 L750,180 L780,220 L780,250 L750,280 L50,280 L20,250 L20,220 L100,200 Z" fill="#111" stroke="#00f3ff" stroke-width="2"/>
+    <!-- Wheels -->
+    <circle cx="150" cy="280" r="40" fill="#000" stroke="#ff00ff" stroke-width="3"/>
+    <circle cx="650" cy="280" r="40" fill="#000" stroke="#ff00ff" stroke-width="3"/>
+    <!-- Neon Glow Underneath -->
+    <ellipse cx="400" cy="300" rx="350" ry="10" fill="rgba(255, 0, 255, 0.3)" filter="blur(10px)"/>
+</svg>

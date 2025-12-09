@@ -5,18 +5,20 @@
     <link rel="stylesheet" href="/static/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-<body>
+<body id="top">
+    <!-- Background Animation -->
+    <div class="cyber-snow"></div>
 
     <!-- NAVIGATION BAR -->
     <nav class="navbar">
         <div class="nav-left">
-            <a href="/" class="logo">Journey To The West</a>
+            <a href="{{ '/' if request.path != '/' else '#top' }}" class="logo">PJ's Blog</a>
         </div>  
 
         <div class="nav-right">
-            <a href="/">Intro</a>
-            <a href="/Progress">Progress</a>
-            <a href="/Projects">Projects</a>
+            <a href="{{ '/' if request.path != '/' else '#top' }}">Home</a>
+            <a href="#dashboard-section">Progress</a>
+            <a href="#projects-section">Projects</a>
         </div>
     </nav>
 
