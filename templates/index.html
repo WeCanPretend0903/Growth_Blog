@@ -16,6 +16,16 @@
             
             <p><span class="prompt">root@blog:~$</span> <span class="cursor">_</span></p>
         </div>
+
+        <!-- Social Links -->
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/pj0903" target="_blank" class="social-btn">
+                <i class="fab fa-linkedin"></i> LinkedIn
+            </a>
+            <a href="https://www.instagram.com/peijian_huang/" target="_blank" class="social-btn">
+                <i class="fab fa-instagram"></i> Instagram
+            </a>
+        </div>
     </div>
 
     <!-- Location Visualization Module -->
@@ -48,5 +58,78 @@
         </div>
     </div>
 
+    <!-- Progress Module (Full Width) -->
+    <div class="cyber-card full-width">
+        <h2 class="header-glitch" data-text="// SYNC_STATUS">// SYNC_STATUS</h2>
+        
+        <div class="stats-grid">
+            <!-- GitHub Stats -->
+            <div class="stat-module" id="github-module">
+                <h3><i class="fab fa-github"></i> GITHUB</h3>
+                <div class="stat-row">
+                    <span>Repos:</span> <span id="gh-repos" class="loading">--</span>
+                </div>
+                <div class="stat-row">
+                    <span>Followers:</span> <span id="gh-followers" class="loading">--</span>
+                </div>
+                <div class="progress-bar-container">
+                    <div class="progress-label">Activity</div>
+                    <div class="progress-track">
+                        <div class="progress-fill" style="width: 75%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LeetCode Stats -->
+            <div class="stat-module" id="leetcode-module">
+                <h3><i class="fas fa-code"></i> LEETCODE</h3>
+                <div class="stat-row">
+                    <span>Solved:</span> <span id="lc-solved" class="loading">--</span>
+                </div>
+                <div class="stat-row">
+                    <span>Ranking:</span> <span id="lc-ranking" class="loading">--</span>
+                </div>
+                <div class="progress-bar-container">
+                    <div class="progress-label">Acceptance</div>
+                    <div class="progress-track">
+                        <div class="progress-fill" id="lc-acceptance" style="width: 0%;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
+
+<script>
+    // Configuration - REPLACE THESE WITH YOUR USERNAMES
+    const GITHUB_USERNAME = 'WeCanPretend0903'; // Inferred from repo
+    const LEETCODE_USERNAME = 'Fu710202347'; 
+
+    // Fetch GitHub Data
+    fetch(`https://api.github.com/users/${GITHUB_USERNAME}`)
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('gh-repos').innerText = data.public_repos;
+            document.getElementById('gh-followers').innerText = data.followers;
+            document.getElementById('gh-repos').classList.remove('loading');
+            document.getElementById('gh-followers').classList.remove('loading');
+        })
+        .catch(err => console.error('GitHub fetch failed', err));
+
+    // Fetch LeetCode Data (using a public proxy API)
+    fetch(`https://leetcode-stats-api.herokuapp.com/${LEETCODE_USERNAME}`)
+        .then(response => response.json())
+        .then(data => {
+            if(data.status === 'success') {
+                document.getElementById('lc-solved').innerText = data.totalSolved;
+                document.getElementById('lc-ranking').innerText = data.ranking;
+                document.getElementById('lc-acceptance').style.width = `${data.acceptanceRate}%`;
+                
+                document.getElementById('lc-solved').classList.remove('loading');
+                document.getElementById('lc-ranking').classList.remove('loading');
+            }
+        })
+        .catch(err => console.error('LeetCode fetch failed', err));
+</script>
 {% endblock %}
